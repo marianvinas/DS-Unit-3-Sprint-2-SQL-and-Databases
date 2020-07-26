@@ -25,4 +25,14 @@ cursor.execute('SELECT * from test_table;')
 
 ### Note - nothing happened yet! We need to actually *fetch* from the cursor
 results = cursor.fetchall()
-print(results)
+#print(results)
+
+
+########## Connect to SQLite3 DB for RG data ############
+
+import sqlite3
+
+sl_conn = sqlite3.connect("rpg_db.sqlite3")
+sl_cursor = sl_conn.cursor()
+characters = sl_cursor.execute('SELECT * FROM charactercreator_character LIMIT 10')
+print(characters)
