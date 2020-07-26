@@ -35,4 +35,35 @@ import sqlite3
 sl_conn = sqlite3.connect("rpg_db.sqlite3")
 sl_cursor = sl_conn.cursor()
 characters = sl_cursor.execute('SELECT * FROM charactercreator_character LIMIT 10')
-print(characters)
+#print(characters)
+
+########## Create Character Table in PostGRES ############
+
+create_character_table_query = '''
+CREATE TABLE IF NOT EXISTS rpg_characters (
+    	character_id SERIAL PRIMARY KEY,
+	name VARCHAR(30),
+	level INT,
+	exp INT,
+	hp INT,
+	strength INT,
+	intelligence INT,
+	dexterity INT,
+	wisdom INT
+)
+'''
+
+cursor.execute(create_character_table_query)
+cursor.commit()
+
+########## Insert Character Table in PostGRES ############
+
+for character in characters:
+
+    insert_query = ''' INSERT INTO rpg_characters
+        (character_id, name, level, exp, hp, strength, intelligence, dexterit, wisdom) VALUES
+        {character}
+    '''
+    cursor.execute(insert_query)
+
+conn.commit()
