@@ -9,6 +9,9 @@ pylint = "*"
 [packages]
 python-dotenv = "*"
 psycopg2-binary = "*"
+pymongo = "*"
+dnspython = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"
