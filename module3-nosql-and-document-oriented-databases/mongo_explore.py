@@ -1,5 +1,6 @@
 import pymongo
 import os
+import json
 from dotenv import load_dotenv
 from pdb import set_trace as breakpoint
  
@@ -29,5 +30,14 @@ print(db.list_collection_names())
 # Access a specific collection
 customers - db.customers
 print(customers.count_documents({}))
+
+with open('test_data_json.txt') as json_file:
+    rpg_data = json.load(json_file)
+
+my_db = client.rpg_data
+character_table = my_db.characters
+
+character_table.insert_many(rpg_data)
+print(character_table.count_documents({}))
  
-breakpoint()
+# breakpoint()
