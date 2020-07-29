@@ -24,6 +24,10 @@ print(client.list_database_names())
 
 # Setting the DB to sample_analytics
 db - client.sample_analytics
-print(db.list_collection())
+print(db.list_collection_names())
+
+# Access a specific collection
+customers - db.customers
+print(customers.count_documents({}))
  
 breakpoint()
