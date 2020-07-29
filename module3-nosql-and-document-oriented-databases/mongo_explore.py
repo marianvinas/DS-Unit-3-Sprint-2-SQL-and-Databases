@@ -20,5 +20,10 @@ print("CLIENT:", type(client), client)
 # Got this from MongoDB Atlas
 #client = pymongo.MongoClient("mongodb+srv://admin:<password>@<cluster_name>.mongodb.net/<dbname>?retryWrites=true&w=majority")
 #db = client.test
+print(client.list_database_names())
+
+# Setting the DB to sample_analytics
+db - client.sample_analytics
+print(db.list_collection())
  
 breakpoint()
